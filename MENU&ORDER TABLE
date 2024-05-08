@@ -1,0 +1,88 @@
+create database restaurant_db
+
+select*
+FROM menu_items
+
+select COUNT(*)
+FROM menu_items
+
+select *
+FROM menu_items
+order by price
+select *
+FROM menu_items
+order by price desc
+
+select COUNT(*)
+FROM menu_items
+where category='italian'
+
+select *
+FROM menu_items
+where category='italian'
+order by price
+
+select *
+FROM menu_items
+where category='italian'
+order by price desc
+
+select category, COUNT(menu_item_id) num_dishes
+FROM menu_items
+group by category
+
+select category, avg(price) avg_price
+FROM menu_items
+group by category
+
+select*from order_details
+
+select MIN(order_date) min_date, MAX(order_date) max_date
+from order_details
+
+select count(distinct order_id) count_distinct_order_id
+from order_details
+
+select COUNT(*) CountOrderId
+from order_details
+
+select order_id, COUNT(item_id) num_items
+from order_details
+group by order_id
+order by num_items desc
+
+ select*from menu_items
+ select*from order_details
+
+ select *
+ from order_details od left JOIN menu_items mi
+  ON od.item_id=mi.menu_item_id
+
+select item_name,category, count(order_details_id) num_purchases
+ from order_details od JOIN menu_items mi
+  ON od.item_id=mi.menu_item_id
+  GROUP BY item_name,category
+  order by num_purchases 
+
+  select order_id,sum(price) total_spend
+ from order_details od left JOIN menu_items mi
+  ON od.item_id=mi.menu_item_id
+  group by order_id
+  order by total_spend DESC
+  LIMIT 5;
+
+select category, count(item_id) num_items
+ from order_details od left JOIN menu_items mi
+  ON od.item_id=mi.menu_item_id
+  WHERE ORDER_id=440
+  group by category
+
+  select ORDER_ID,category, count(item_id) num_items
+ from order_details od left JOIN menu_items mi
+  ON od.item_id=mi.menu_item_id
+  WHERE ORDER_id IN (440,2075,1957,330,2675)
+  group by ORDER_ID, category
+
+
+
+
